@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as numpy
+import schedule
+import time
 
 
 
@@ -13,9 +15,25 @@ def main():
 	df = pd.read_csv('test.csv',index_col=0)
 	st.dataframe(df)
 	x = st.number_input('enter')
+	def bedtime():
+		df.loc[len(df),'a'] = "It is bed time go rest"
+
+	def geeks():
+		df.loc[len(df),'a'] =  "Every 10 mins and hour"
+
+	# Task scheduling
+	# After every 10mins geeks() is called. 
+	schedule.every(10).minutes.do(geeks)
+
+	# After every hour geeks() is called.
+	schedule.every().hour.do(geeks)
+
+	# Every day at 12am or 00:00 time bedtime() is called.
+	schedule.every().day.at("00:00").do(bedtime)
+	df.to_csv('test.csv')
 	
 	if st.button('submit'):
-		df.loc[0,'a'] = x
+		df.loc[len(df),'a'] = x
 		df.to_csv('test.csv')
 	if st.button('Load'):
 
