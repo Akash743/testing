@@ -23,7 +23,7 @@ def main():
 
 	# Task scheduling
 	# After every 10mins geeks() is called. 
-	schedule.every(10).minutes.do(geeks)
+	schedule.every(3).minutes.do(geeks)
 
 	# After every hour geeks() is called.
 	schedule.every().hour.do(geeks)
