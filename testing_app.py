@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as numpy
 import schedule
 import time
+import date
 
 
 
@@ -14,6 +15,7 @@ def main():
 	#df.to_csv('test.csv')
 	df = pd.read_csv('test.csv',index_col=0)
 	st.dataframe(df)
+	st.write(date.today())
 	x = st.number_input('enter')
 	def bedtime():
 		df.loc[len(df),'a'] = "It is bed time go rest"
