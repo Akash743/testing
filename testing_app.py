@@ -14,6 +14,10 @@ def main():
 	#st.dataframe(df)
 	#df.to_csv('test.csv')
 	df = pd.read_csv('test.csv',index_col=0)
+	show_gkel = pd.read_csv('show_gkel_total.csv',index_col=0)
+	show_gkel.columns = show_gkel.iloc[1]
+	monthly1 = show_gkel.iloc[10:15,0:9]
+	st.table(monthly1)
 	st.dataframe(df)
 	st.write(time.time())
 	x = st.number_input('enter')
